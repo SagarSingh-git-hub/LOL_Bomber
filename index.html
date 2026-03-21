@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LOLBomber - Premium SMS & Call Bomber</title>
+    
+    <!-- React & Babel -->
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff7ed', 100: '#ffead5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c',
+                            500: '#f97316', 600: '#ea580c', 700: '#c2410c', 800: '#9a3412', 900: '#7c2d12',
+                        },
+                        accent: { 400: '#38bdf8', 500: '#0ea5e9' },
+                        glass: {
+                            DEFAULT: 'rgba(255, 255, 255, 0.03)', strong: 'rgba(255, 255, 255, 0.05)',
+                            hover: 'rgba(255, 255, 255, 0.08)', border: 'rgba(255, 255, 255, 0.1)',
+                            borderHover: 'rgba(255, 255, 255, 0.2)',
+                        }
+                    },
+                    animation: {
+                        'glow': 'glow 8s ease-in-out infinite alternate',
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        glow: { '0%': { opacity: 0.3, transform: 'scale(1) translate(0, 0)' }, '100%': { opacity: 0.6, transform: 'scale(1.1) translate(20px, -20px)' } },
+                        fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+                        slideUp: { '0%': { opacity: 0, transform: 'translateY(20px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-card { @apply bg-glass backdrop-blur-xl border border-glass-border rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300; }
+            .glass-card-hover { @apply hover:bg-glass-hover hover:border-glass-borderHover hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(249,115,22,0.1)]; }
+            .glass-btn { @apply px-6 py-3 rounded-xl bg-glass-strong backdrop-blur-md border border-glass-border text-white font-medium transition-all duration-300 hover:bg-white/10 hover:border-white/20 active:scale-[0.98] flex items-center justify-center gap-2; }
+            .glass-btn-primary { @apply px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 text-white font-bold transition-all duration-300 hover:shadow-[0_0_25px_rgba(249,115,22,0.5)] hover:brightness-110 active:scale-[0.98] border border-brand-400/30 flex items-center justify-center gap-2; }
+            .glass-input { @apply w-full bg-black/40 backdrop-blur-md border border-glass-border rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-brand-500/50 focus:bg-black/60 focus:shadow-[0_0_15px_rgba(249,115,22,0.15)] transition-all duration-300 font-mono; }
+            
+            .scrollbar-hide::-webkit-scrollbar { display: none; }
+            .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+            .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        }
+        body { background-color: #050505; color: #f8fafc; overflow-x: hidden; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel" src="components/Sidebar.js"></script>
+    <script type="text/babel" src="components/MobileNav.js"></script>
+    <script type="text/babel" src="components/Header.js"></script>
+    <script type="text/babel" src="components/StatCard.js"></script>
+    <script type="text/babel" src="components/BombingPanel.js"></script>
+    <script type="text/babel" src="components/LiveConsole.js"></script>
+    <script type="text/babel" src="components/ProtectionPanel.js"></script>
+    <script type="text/babel" src="components/InfoSection.js"></script>
+    <script type="text/babel" src="components/LegalPages.js"></script>
+    <script type="text/babel" src="components/Footer.js"></script>
+    <script type="text/babel" src="app.js"></script>
+</body>
+</html>
