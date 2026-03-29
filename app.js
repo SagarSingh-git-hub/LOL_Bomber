@@ -11,6 +11,7 @@ class ErrorBoundary extends React.Component {
 function App() {
     const [activeTab, setActiveTab] = React.useState('dashboard');
     const [isBombing, setIsBombing] = React.useState(false);
+    const [attackInfo, setAttackInfo] = React.useState(null);
     const [activeUsers, setActiveUsers] = React.useState(1204);
     const scrollContainerRef = React.useRef(null);
 
@@ -28,20 +29,25 @@ function App() {
         }
     }, [activeTab]);
 
+    const handleStatusChange = (active, info) => {
+        setIsBombing(active);
+        setAttackInfo(info);
+    };
+
     const renderContent = () => {
         switch(activeTab) {
             case 'dashboard':
                 return (
                     <div className="space-y-8 animate-fade-in">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                            <StatCard icon="icon-bomb" iconImage="bomb.png" label="Total Sent" value="2.4M+" trend="+15%" trendUp={true} color="brand" />
-                            <StatCard icon="icon-users" iconImage="Group.png" label="Active Users" value={activeUsers.toLocaleString()} trend="+5%" trendUp={true} color="accent" />
-                            <StatCard icon="icon-server" iconImage="Server.png" label="Uptime" value="99.9%" trend="Stable" trendUp={true} color="green" />
-                            <StatCard icon="icon-shield-check" iconImage="Shield1.png" label="Protected" value="84k" trend="+8%" trendUp={true} color="purple" />
+                            <StatCard icon="icon-bomb" iconImage="icons/bomb.png" label="Total Sent" value="2.4M+" trend="+15%" trendUp={true} color="brand" />
+                            <StatCard icon="icon-users" iconImage="icons/Group.png" label="Active Users" value={activeUsers.toLocaleString()} trend="+5%" trendUp={true} color="accent" />
+                            <StatCard icon="icon-server" iconImage="icons/Server.png" label="Uptime" value="99.9%" trend="Stable" trendUp={true} color="green" />
+                            <StatCard icon="icon-shield-check" iconImage="icons/Shield1.png" label="Protected" value="84k" trend="+8%" trendUp={true} color="purple" />
                         </div>
                         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                            <div className="xl:col-span-2"><BombingPanel type="SMS" onStatusChange={setIsBombing} /></div>
-                            <div><LiveConsole isActive={isBombing} /></div>
+                            <div className="xl:col-span-2"><BombingPanel type="SMS" onStatusChange={handleStatusChange} /></div>
+                            <div><LiveConsole isActive={isBombing} attackInfo={attackInfo} /></div>
                         </div>
                         <InfoSection />
                     </div>
@@ -50,8 +56,8 @@ function App() {
                 return (
                     <div className="space-y-8 animate-fade-in pb-12">
                          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                            <div className="xl:col-span-2"><BombingPanel type="SMS" onStatusChange={setIsBombing} /></div>
-                            <div><LiveConsole isActive={isBombing} /></div>
+                            <div className="xl:col-span-2"><BombingPanel type="SMS" onStatusChange={handleStatusChange} /></div>
+                            <div><LiveConsole isActive={isBombing} attackInfo={attackInfo} /></div>
                         </div>
                     </div>
                 );
@@ -59,8 +65,8 @@ function App() {
                 return (
                     <div className="space-y-8 animate-fade-in pb-12">
                          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                            <div className="xl:col-span-2"><BombingPanel type="Call" onStatusChange={setIsBombing} /></div>
-                            <div><LiveConsole isActive={isBombing} /></div>
+                            <div className="xl:col-span-2"><BombingPanel type="Call" onStatusChange={handleStatusChange} /></div>
+                            <div><LiveConsole isActive={isBombing} attackInfo={attackInfo} /></div>
                         </div>
                     </div>
                 );
@@ -68,8 +74,8 @@ function App() {
                 return (
                     <div className="space-y-8 animate-fade-in pb-12">
                          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                            <div className="xl:col-span-2"><BombingPanel type="Email" onStatusChange={setIsBombing} /></div>
-                            <div><LiveConsole isActive={isBombing} /></div>
+                            <div className="xl:col-span-2"><BombingPanel type="Email" onStatusChange={handleStatusChange} /></div>
+                            <div><LiveConsole isActive={isBombing} attackInfo={attackInfo} /></div>
                         </div>
                     </div>
                 );
@@ -77,8 +83,8 @@ function App() {
                 return (
                     <div className="space-y-8 animate-fade-in pb-12">
                          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                            <div className="xl:col-span-2"><BombingPanel type="WhatsApp" onStatusChange={setIsBombing} /></div>
-                            <div><LiveConsole isActive={isBombing} /></div>
+                            <div className="xl:col-span-2"><BombingPanel type="WhatsApp" onStatusChange={handleStatusChange} /></div>
+                            <div><LiveConsole isActive={isBombing} attackInfo={attackInfo} /></div>
                         </div>
                     </div>
                 );
@@ -111,7 +117,7 @@ function App() {
                 <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
             </div>
             
-            <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+            <NewSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
             <MobileNav activeTab={activeTab} setActiveTab={setActiveTab} />
             
             <main className="flex-1 flex flex-col h-full overflow-hidden relative z-10">

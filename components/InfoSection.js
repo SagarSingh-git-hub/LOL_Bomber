@@ -38,7 +38,7 @@ function InfoSection() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-slide-up mt-8">
                 <div className="glass-card p-6 sm:p-8">
                     <div className="w-12 h-12 rounded-xl bg-glass border border-white/10 flex items-center justify-center mb-5">
-                        <img src="i.png" alt="Info" className="w-8 h-8 object-contain" />
+                        <img src="icons/i.png" alt="Info" className="w-8 h-8 object-contain" />
                     </div>
                     <h3 className="text-xl font-bold text-white mb-3">What Is Call Bomber?</h3>
                     <p className="text-white/60 text-sm leading-relaxed mb-4">
@@ -51,7 +51,7 @@ function InfoSection() {
 
                 <div className="glass-card p-6 sm:p-8">
                     <div className="w-12 h-12 rounded-xl bg-glass border border-white/10 flex items-center justify-center mb-5">
-                        <img src="QuestionMark.png" alt="Question" className="w-8 h-8 object-contain" />
+                        <img src="icons/QuestionMark.png" alt="Question" className="w-8 h-8 object-contain" />
                     </div>
                     <h3 className="text-xl font-bold text-white mb-5">How To Use Call Bomber?</h3>
                     <ul className="space-y-4">
@@ -78,9 +78,9 @@ function InfoSection() {
             <div className="animate-slide-up mt-8 pb-4">
                 <h3 className="text-xl font-bold text-white mb-6 pl-2">Frequently Asked Questions</h3>
                 <div className="space-y-3">
-                    <FAQItem 
+                    <FAQItem
                         index={0}
-                        iconImage="Money.png"
+                        iconImage="icons/Money.png"
                         question="Is Call Bomber free to use?"
                         answer="Yes, the basic version of our service is completely free to use with certain rate limits applied to prevent server overload. Pro users have unlimited access."
                         isOpen={openIndex === 0}
@@ -89,7 +89,7 @@ function InfoSection() {
                     <FAQItem 
                         index={1}
                         iconClass="fas fa-tachometer-alt text-blue-500"
-                        iconImage="Hour.png"
+                        iconImage="icons/Hour.png"
                         question="How many calls can I send at once?"
                         answer="Free users can send up to 1,000 requests per hour. Pro users have unlimited access and faster delivery speeds, allowing multiple concurrent sessions."
                         isOpen={openIndex === 1}
@@ -98,7 +98,7 @@ function InfoSection() {
                     <FAQItem 
                         index={2}
                         iconClass="fas fa-balance-scale text-yellow-500"
-                        iconImage="balance.png"
+                        iconImage="icons/balance.png"
                         question="Is this service legal?"
                         answer="This tool is intended for personal stress testing and educational purposes only. You must have explicit permission to test the target number."
                         isOpen={openIndex === 2}
@@ -107,7 +107,7 @@ function InfoSection() {
                     <FAQItem 
                         index={3}
                         iconClass="fas fa-stop-circle text-red-500"
-                        iconImage="stop.png"
+                        iconImage="icons/stop.png"
                         question="Can I stop a bombing once it's started?"
                         answer="Yes, you can click the Stop button at any time during an active attack to immediately halt all outbound requests to the target number."
                         isOpen={openIndex === 3}

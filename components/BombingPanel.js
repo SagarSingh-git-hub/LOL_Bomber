@@ -7,9 +7,11 @@ function BombingPanel({ type = 'SMS', onStatusChange }) {
     const intervalRef = React.useRef(null);
 
     React.useEffect(() => {
-        if (onStatusChange) onStatusChange(status === 'active');
+        if (onStatusChange) {
+            onStatusChange(status === 'active', status === 'active' ? { target, type, count } : null);
+        }
         return () => stopAttack();
-    }, [status]);
+    }, [status, target, type, count]);
 
     const stopAttack = () => {
         if (intervalRef.current) {
@@ -81,9 +83,9 @@ function BombingPanel({ type = 'SMS', onStatusChange }) {
                     <div className="space-y-3">
                         <label className="text-sm font-bold text-white flex items-center gap-2 mb-2">
                             {type === 'WhatsApp' ? (
-                                <img src="what.png" alt="WhatsApp Icon" className="w-6 h-6 object-contain" />
+                                <img src="icons/WhatsApp.png" alt="WhatsApp Icon" className="w-6 h-6 object-contain" />
                             ) : (
-                                type === 'Email' ? <img src="mailbox.png" alt="Mail Icon" className="w-7 h-7 object-contain" /> : <img src="phone.png" alt="Phone Icon" className="w-7 h-7 object-contain" />
+                                type === 'Email' ? <img src="icons/mailbox.png" alt="Mail Icon" className="w-7 h-7 object-contain" /> : <img src="icons/phone.png" alt="Phone Icon" className="w-7 h-7 object-contain" />
                             )}
                             {type === 'Email' ? 'Email Address' : 'Phone Number'}
                         </label>
@@ -148,7 +150,7 @@ function BombingPanel({ type = 'SMS', onStatusChange }) {
 
                     <div className="space-y-3">
                         <label className="text-sm font-bold text-white flex items-center gap-2 mb-2">
-                            <img src="message.png" alt="Message Icon" className="w-6 h-6 object-contain" />
+                            <img src="icons/message.png" alt="Message Icon" className="w-6 h-6 object-contain" />
                             Custom Message
                         </label>
                         <input 
@@ -190,7 +192,7 @@ function BombingPanel({ type = 'SMS', onStatusChange }) {
                             </button>
                         ) : (
                             <button type="submit" disabled={!agreed || (type !== 'Email' && target.length < 10) || (type === 'Email' && !target.includes('@'))} className="glass-btn-primary flex-1 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed group">
-                                <div className="icon-rocket group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform"></div> Launch Attack
+                                <img src="icons/rocket.png" alt="Rocket" className="w-7 h-7 object-contain group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" /> Launch Attack
                             </button>
                         )}
                     </div>

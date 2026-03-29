@@ -4,7 +4,7 @@ function Footer({ setActiveTab }) {
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-6">
                 <div className="col-span-1 md:col-span-2">
                     <div className="flex items-center gap-2 mb-3">
-                        <img src="LOLBomberr.svg" alt="LOLBomber Logo" className="w-10 h-10 object-contain" />
+                        <img src="icons/LOLBomberr.png" alt="LOLBomber Logo" className="w-10 h-10 object-contain" />
                         <span className="text-lg font-bold tracking-tight text-white">LOL<span className="text-brand-400">Bomber</span></span>
                     </div>
                     <p className="text-white/40 text-xs max-w-xs leading-relaxed">

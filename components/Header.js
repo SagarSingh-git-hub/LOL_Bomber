@@ -49,7 +49,7 @@ function Header({ activeTab }) {
 
             <div className="flex items-center gap-3 sm:gap-5">
                 <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 border border-white/5 shadow-inner">
-                    <img src="Time.png" alt="Clock Icon" className="w-6 h-6 object-contain opacity-50" />
+                    <img src="icons/Time.png" alt="Clock Icon" className="w-6 h-6 object-contain opacity-50" />
                     <span className="text-xs font-mono text-white/70">{timeString}</span>
                     <div className="w-px h-3 bg-white/20 mx-1"></div>
                     <span className="text-[10px] font-bold text-brand-400 tracking-wider uppercase">Live</span>
@@ -60,7 +60,7 @@ function Header({ activeTab }) {
                         onClick={() => setShowNotifs(!showNotifs)} 
                         className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white/70 hover:text-white transition-all hover:bg-white/10 border-white/10 shadow-none relative"
                     >
-                        <img src="bell.png" alt="Bell Icon" className="w-6 h-6 object-contain" />
+                        <img src="icons/bell.png" alt="Bell Icon" className="w-6 h-6 object-contain" />
                         <span className="absolute top-2 right-2.5 w-2 h-2 bg-brand-500 rounded-full shadow-[0_0_5px_rgba(249,115,22,0.8)]"></span>
                     </button>
                     
