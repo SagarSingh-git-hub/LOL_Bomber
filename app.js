@@ -91,17 +91,17 @@ function App() {
             case 'protection':
                 return <div className="animate-fade-in pb-12"><ProtectionPanel /></div>;
             case 'terms':
-                return <LegalPages type="terms" />;
+                return <LegalPages type="terms" setActiveTab={setActiveTab} />;
             case 'privacy':
-                return <LegalPages type="privacy" />;
+                return <LegalPages type="privacy" setActiveTab={setActiveTab} />;
             case 'disclaimer':
-                return <LegalPages type="disclaimer" />;
+                return <LegalPages type="disclaimer" setActiveTab={setActiveTab} />;
             case 'about':
-                return <LegalPages type="about" />;
+                return <LegalPages type="about" setActiveTab={setActiveTab} />;
             case 'contact':
-                return <LegalPages type="contact" />;
+                return <LegalPages type="contact" setActiveTab={setActiveTab} />;
             case 'faq':
-                return <LegalPages type="faq" />;
+                return <LegalPages type="faq" setActiveTab={setActiveTab} />;
             default:
                 return null;
         }

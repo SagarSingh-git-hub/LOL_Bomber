@@ -8,8 +8,7 @@ function Footer({ setActiveTab }) {
                         <span className="text-lg font-bold tracking-tight text-white">LOL<span className="text-brand-400">Bomber</span></span>
                     </div>
                     <p className="text-white/40 text-xs max-w-xs leading-relaxed">
-                        The most powerful, reliable, and premium stress testing platform of 2026. Built with modern web technologies.
-                    </p>
+                        The most powerful and reliable bombing service available in 2026. Join thousands of satisfied users who trust our free bombing solutions.                    </p>
                 </div>
                 
                 <div>
