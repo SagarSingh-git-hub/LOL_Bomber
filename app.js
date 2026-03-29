@@ -34,10 +34,10 @@ function App() {
                 return (
                     <div className="space-y-8 animate-fade-in">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                            <StatCard icon="icon-bomb" label="Total Sent" value="2.4M+" trend="+15%" trendUp={true} color="brand" />
-                            <StatCard icon="icon-users" label="Active Users" value={activeUsers.toLocaleString()} trend="+5%" trendUp={true} color="accent" />
-                            <StatCard icon="icon-server" label="Uptime" value="99.9%" trend="Stable" trendUp={true} color="green" />
-                            <StatCard icon="icon-shield-check" label="Protected" value="84k" trend="+8%" trendUp={true} color="purple" />
+                            <StatCard icon="icon-bomb" iconImage="bomb.png" label="Total Sent" value="2.4M+" trend="+15%" trendUp={true} color="brand" />
+                            <StatCard icon="icon-users" iconImage="Group.png" label="Active Users" value={activeUsers.toLocaleString()} trend="+5%" trendUp={true} color="accent" />
+                            <StatCard icon="icon-server" iconImage="Server.png" label="Uptime" value="99.9%" trend="Stable" trendUp={true} color="green" />
+                            <StatCard icon="icon-shield-check" iconImage="Shield1.png" label="Protected" value="84k" trend="+8%" trendUp={true} color="purple" />
                         </div>
                         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                             <div className="xl:col-span-2"><BombingPanel type="SMS" onStatusChange={setIsBombing} /></div>

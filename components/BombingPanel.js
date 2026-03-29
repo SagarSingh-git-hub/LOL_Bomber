@@ -65,7 +65,9 @@ function BombingPanel({ type = 'SMS', onStatusChange }) {
                 {type === 'WhatsApp' ? (
                     <i className="fab fa-whatsapp text-[250px] text-white"></i>
                 ) : (
-                    <div className={`${type === 'SMS' ? 'icon-message-square' : type === 'Email' ? 'icon-mail' : 'icon-phone'} text-[250px] text-white`}></div>
+                    type === 'SMS' ? <img src="message.png" alt="Message Icon" className="w-[220px] h-[220px] object-contain opacity-[0.03]" /> : 
+                    type === 'Email' ? <img src="mailbox.png" alt="Mail Icon" className="w-[220px] h-[220px] object-contain opacity-[0.03]" /> : 
+                    <div className="icon-phone text-[250px] text-white"></div>
                 )}
             </div>
 
@@ -79,9 +81,9 @@ function BombingPanel({ type = 'SMS', onStatusChange }) {
                     <div className="space-y-3">
                         <label className="text-sm font-bold text-white flex items-center gap-2 mb-2">
                             {type === 'WhatsApp' ? (
-                                <i className="fab fa-whatsapp text-brand-400"></i>
+                                <img src="what.png" alt="WhatsApp Icon" className="w-6 h-6 object-contain" />
                             ) : (
-                                <div className={type === 'Email' ? 'icon-mail text-brand-400' : 'icon-phone-call text-brand-400'}></div>
+                                type === 'Email' ? <img src="mailbox.png" alt="Mail Icon" className="w-7 h-7 object-contain" /> : <img src="phone.png" alt="Phone Icon" className="w-7 h-7 object-contain" />
                             )}
                             {type === 'Email' ? 'Email Address' : 'Phone Number'}
                         </label>
@@ -146,7 +148,7 @@ function BombingPanel({ type = 'SMS', onStatusChange }) {
 
                     <div className="space-y-3">
                         <label className="text-sm font-bold text-white flex items-center gap-2 mb-2">
-                            <div className="icon-message-square text-brand-400"></div>
+                            <img src="message.png" alt="Message Icon" className="w-6 h-6 object-contain" />
                             Custom Message
                         </label>
                         <input 
