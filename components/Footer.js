@@ -41,8 +41,9 @@ function Footer({ setActiveTab }) {
                 </div>
             </div>
             
-            <div className="text-center text-[10px] text-white/30 pt-4 border-t border-white/5">
+            <div className="text-center text-[10px] text-white/30 pt-4 border-t border-white/5 flex items-center justify-center gap-2">
                 &copy; 2026 LOLBomber. All rights reserved.
+                <span className="opacity-20 hover:opacity-100 transition-opacity cursor-pointer text-[8px]" onClick={() => setActiveTab('admin')}>&bull; Admin</span>
             </div>
         </footer>
     );

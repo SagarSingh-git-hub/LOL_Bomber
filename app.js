@@ -46,7 +46,7 @@ function App() {
                             <StatCard icon="icon-shield-check" iconImage="icons/Shield1.png" label="Protected" value="84k" trend="+8%" trendUp={true} color="purple" />
                         </div>
                         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                            <div className="xl:col-span-2"><BombingPanel type="SMS" onStatusChange={handleStatusChange} /></div>
+                            <div className="xl:col-span-2"><AttackPanel type="SMS" onStatusChange={handleStatusChange} /></div>
                             <div><LiveConsole isActive={isBombing} attackInfo={attackInfo} /></div>
                         </div>
                         <InfoSection />
@@ -56,7 +56,7 @@ function App() {
                 return (
                     <div className="space-y-8 animate-fade-in pb-12">
                          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                            <div className="xl:col-span-2"><BombingPanel type="SMS" onStatusChange={handleStatusChange} /></div>
+                            <div className="xl:col-span-2"><AttackPanel type="SMS" onStatusChange={handleStatusChange} /></div>
                             <div><LiveConsole isActive={isBombing} attackInfo={attackInfo} /></div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ function App() {
                 return (
                     <div className="space-y-8 animate-fade-in pb-12">
                          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                            <div className="xl:col-span-2"><BombingPanel type="Call" onStatusChange={handleStatusChange} /></div>
+                            <div className="xl:col-span-2"><AttackPanel type="Call" onStatusChange={handleStatusChange} /></div>
                             <div><LiveConsole isActive={isBombing} attackInfo={attackInfo} /></div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ function App() {
                 return (
                     <div className="space-y-8 animate-fade-in pb-12">
                          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                            <div className="xl:col-span-2"><BombingPanel type="Email" onStatusChange={handleStatusChange} /></div>
+                            <div className="xl:col-span-2"><AttackPanel type="Email" onStatusChange={handleStatusChange} /></div>
                             <div><LiveConsole isActive={isBombing} attackInfo={attackInfo} /></div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@ function App() {
                 return (
                     <div className="space-y-8 animate-fade-in pb-12">
                          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                            <div className="xl:col-span-2"><BombingPanel type="WhatsApp" onStatusChange={handleStatusChange} /></div>
+                            <div className="xl:col-span-2"><AttackPanel type="WhatsApp" onStatusChange={handleStatusChange} /></div>
                             <div><LiveConsole isActive={isBombing} attackInfo={attackInfo} /></div>
                         </div>
                     </div>
@@ -102,6 +102,8 @@ function App() {
                 return <LegalPages type="contact" setActiveTab={setActiveTab} />;
             case 'faq':
                 return <LegalPages type="faq" setActiveTab={setActiveTab} />;
+            case 'admin':
+                return <AdminDashboard />;
             default:
                 return null;
         }
