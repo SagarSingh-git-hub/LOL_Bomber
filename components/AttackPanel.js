@@ -41,24 +41,29 @@ function AttackPanel({ type = 'SMS', onStatusChange }) {
             if (data.is_demo) {
                 alert("DEMO MODE DETECTED: Simulating secure payment for testing...");
                 setTimeout(async () => {
-                    const verificationRes = await fetch('http://127.0.0.1:5000/api/verify_payment', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            razorpay_payment_id: "demo_payment_" + Math.random().toString(36).substring(7),
-                            razorpay_order_id: data.order.id,
-                            razorpay_signature: "demo_signature"
-                        })
-                    });
-                    const verifyData = await verificationRes.json();
-                    if (verifyData.success) {
-                        alert("✨ TEST SUCCESS! Your Premium Key is: " + verifyData.premium_key);
-                        setPremiumKey(verifyData.premium_key);
-                        setMode('premium');
-                    } else {
-                        alert("Demo Verification Failed!");
+                    try {
+                        const verificationRes = await fetch('http://127.0.0.1:5000/api/verify_payment', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                razorpay_payment_id: "demo_payment_" + Math.random().toString(36).substring(7),
+                                razorpay_order_id: data.order.id,
+                                razorpay_signature: "demo_signature"
+                            })
+                        });
+                        const verifyData = await verificationRes.json();
+                        if (verifyData.success) {
+                            alert("✨ TEST SUCCESS! Your Premium Key is: " + verifyData.premium_key);
+                            setPremiumKey(verifyData.premium_key);
+                            setMode('premium');
+                        } else {
+                            alert("Demo Verification Failed!");
+                        }
+                    } catch (err) {
+                        alert("Demo Verification Error! Backend running?");
+                    } finally {
+                        setIsPaying(false);
                     }
-                    setIsPaying(false);
                 }, 1500);
                 return;
             }
@@ -72,24 +77,29 @@ function AttackPanel({ type = 'SMS', onStatusChange }) {
                 "image": "https://cdn-icons-png.flaticon.com/512/3241/3241031.png",
                 "order_id": data.order.id,
                 "handler": async function (response) {
-                    const verificationRes = await fetch('http://127.0.0.1:5000/api/verify_payment', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            razorpay_payment_id: response.razorpay_payment_id,
-                            razorpay_order_id: response.razorpay_order_id,
-                            razorpay_signature: response.razorpay_signature
-                        })
-                    });
-                    const verifyData = await verificationRes.json();
-                    if (verifyData.success) {
-                        alert("Payment Successful! Your Premium Key is: " + verifyData.premium_key);
-                        setPremiumKey(verifyData.premium_key);
-                        setMode('premium');
-                    } else {
-                        alert("Payment Verification Failed!");
+                    try {
+                        const verificationRes = await fetch('http://127.0.0.1:5000/api/verify_payment', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_signature: response.razorpay_signature
+                            })
+                        });
+                        const verifyData = await verificationRes.json();
+                        if (verifyData.success) {
+                            alert("Payment Successful! Your Premium Key is: " + verifyData.premium_key);
+                            setPremiumKey(verifyData.premium_key);
+                            setMode('premium');
+                        } else {
+                            alert("Payment Verification Failed: " + (verifyData.error || "Unknown error"));
+                        }
+                    } catch (err) {
+                        alert("Payment Verification Error! Backend running?");
+                    } finally {
+                        setIsPaying(false);
                     }
-                    setIsPaying(false);
                 },
                 "modal": {
                     "ondismiss": function () {

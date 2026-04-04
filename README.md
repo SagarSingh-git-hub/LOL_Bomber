@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=200&section=header&text=LOLBomber%20v3.0&fontSize=80&fontAlignY=35&desc=Professional%20Full-Stack%20SaaS%20Bombing%20Platform&descAlignY=55&descAlign=50" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=200&section=header&text=LOLBomber%20v3.0&fontSize=80&fontAlignY=35&desc=Next-Gen%20Bulk%20Bombing%20Platform&descAlignY=55&descAlign=50" />
 
   <p align="center">
     <strong>The most powerful, beautifully designed, and reliable bombing service available in 2026.</strong>
