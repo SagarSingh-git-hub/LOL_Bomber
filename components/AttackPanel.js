@@ -27,7 +27,7 @@ function AttackPanel({ type = 'SMS', onStatusChange }) {
     const handleBuyPremium = async () => {
         setIsPaying(true);
         try {
-            const res = await fetch('http://127.0.0.1:5000/api/create_order', {
+            const res = await fetch('http://127.0.0.1:5001/api/create_order', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }
             });
@@ -42,7 +42,7 @@ function AttackPanel({ type = 'SMS', onStatusChange }) {
                 alert("DEMO MODE DETECTED: Simulating secure payment for testing...");
                 setTimeout(async () => {
                     try {
-                        const verificationRes = await fetch('http://127.0.0.1:5000/api/verify_payment', {
+                        const verificationRes = await fetch('http://127.0.0.1:5001/api/verify_payment', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
@@ -78,7 +78,7 @@ function AttackPanel({ type = 'SMS', onStatusChange }) {
                 "order_id": data.order.id,
                 "handler": async function (response) {
                     try {
-                        const verificationRes = await fetch('http://127.0.0.1:5000/api/verify_payment', {
+                        const verificationRes = await fetch('http://127.0.0.1:5001/api/verify_payment', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
@@ -132,7 +132,7 @@ function AttackPanel({ type = 'SMS', onStatusChange }) {
         };
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/attack', options);
+            const response = await fetch('http://127.0.0.1:5001/api/attack', options);
             const result = await response.json();
 
             if (result.success) {
